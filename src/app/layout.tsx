@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import clsx from "clsx";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -16,8 +17,8 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>
-        <div className="mx-auto container my-4">{children}</div>
+      <body className={clsx(inter.className, "bg-stone-50")}>
+        <div className="mx-auto container my-4 px-4">{children}</div>
       </body>
     </html>
   );
