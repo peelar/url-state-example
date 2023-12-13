@@ -1,7 +1,7 @@
-import { CategoryFilters } from "../CategoryFilters";
-import { BasicFilters } from "../BasicFilters";
-import { SearchResults } from "../SearchResults";
-import { SearchForm } from "../SearchForm";
+import { CategoryFilters } from "../components/CategoryFilters";
+import { BasicFilters } from "../components/BasicFilters";
+import { SearchResults } from "../components/SearchResults";
+import { SearchForm } from "../components/SearchForm";
 
 const SearchGrid = () => {
   return (
