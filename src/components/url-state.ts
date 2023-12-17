@@ -1,12 +1,14 @@
 "use client";
 
-import { useSearchParams } from "next/navigation";
+import { usePathname, useSearchParams } from "next/navigation";
 import React from "react";
 
 /**
  * @description useState equivalent for search params
  */
 export const useSearchParamsState = (name: string) => {
+  usePathname(); // force re-render on pathname change
+
   const searchParams = useSearchParams();
   const value = searchParams.get(name);
 

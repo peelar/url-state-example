@@ -1,9 +1,16 @@
-import { SearchResults } from "@/components/SearchResults";
-import React from "react";
+import {
+  SearchResults,
+  SearchResultsLoading,
+} from "@/components/SearchResults";
+import { Suspense } from "react";
 import { UrlParams } from "../page";
 
 const CategoryPage = (params: UrlParams) => {
-  return <SearchResults {...params} />;
+  return (
+    <Suspense fallback={<SearchResultsLoading />}>
+      <SearchResults {...params} />
+    </Suspense>
+  );
 };
 
 export default CategoryPage;
