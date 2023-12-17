@@ -1,11 +1,20 @@
-export const CategoryFilters = () => {
+"use server";
+
+import { getCategories } from "@/actions";
+import Link from "next/link";
+
+export const CategoryFilters = async () => {
+  const categories = await getCategories();
+
   return (
     <section>
-      <h2>Category Filters</h2>
+      <h2 className="text-xl">Filters</h2>
       <ul>
-        <li>Category 1</li>
-        <li>Category 2</li>
-        <li>Category 3</li>
+        {categories.map((category) => (
+          <li key={category.slug}>
+            <Link href="#">{category.name}</Link>
+          </li>
+        ))}
       </ul>
     </section>
   );

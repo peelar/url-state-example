@@ -25,3 +25,7 @@ h5 {
 h6 {
   @apply text-xs lg:text-base font-medium;
 }
+
+ul {
+  @apply list-disc mx-4 my-2;
+}

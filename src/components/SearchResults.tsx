@@ -1,11 +1,15 @@
-export const SearchResults = () => {
+"use server";
+
+import { getProducts } from "@/actions";
+
+export const SearchResults = async () => {
+  const products = await getProducts();
   return (
     <div>
-      <h2>Search Results</h2>
       <ul>
-        <li>Result 1</li>
-        <li>Result 2</li>
-        <li>Result 3</li>
+        {products.map((product) => (
+          <li key={product.id}>{product.name}</li>
+        ))}
       </ul>
     </div>
   );

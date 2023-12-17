@@ -1,5 +1,5 @@
 import { CategoryFilters } from "../components/CategoryFilters";
-import { BasicFilters } from "../components/BasicFilters";
+import { Sorters } from "../components/Sorters";
 import { SearchResults } from "../components/SearchResults";
 import { SearchForm } from "../components/SearchForm";
 
@@ -17,7 +17,7 @@ const SearchGrid = () => {
           <SearchResults />
         </main>
         <aside className="order-2 col-span-2 lg:col-span-1 lg:order-3">
-          <BasicFilters />
+          <Sorters />
         </aside>
       </div>
     </div>

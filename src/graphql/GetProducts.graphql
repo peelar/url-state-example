@@ -1,0 +1,15 @@
+query GetProducts($sortField: ProductOrderField) {
+  products(
+    channel: "default-channel"
+    first: 10
+    sortBy: { field: $sortField, direction: ASC }
+  ) {
+    edges {
+      node {
+        id
+        name
+        slug
+      }
+    }
+  }
+}
