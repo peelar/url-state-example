@@ -23,7 +23,10 @@ export async function getCategories() {
     throw new Error(result.error.message);
   }
 
-  return result?.data?.categories?.edges.map(({ node }) => node) ?? [];
+  const categories =
+    result?.data?.categories?.edges.map(({ node }) => node) ?? [];
+
+  return [{ slug: "", name: "All", id: "" }, ...categories];
 }
 
 export function getSorters() {
@@ -34,13 +37,23 @@ export function getSorters() {
 }
 
 export async function getProducts(
-  { sortBy }: { sortBy: ProductOrderField } = {
-    sortBy: ProductOrderField.CreatedAt,
+  {
+    sortBy,
+    categoryId,
+  }: {
+    sortBy: string | undefined;
+    categoryId: string | undefined;
+  } = {
+    sortBy: ProductOrderField.Name,
+    categoryId: undefined,
   }
 ) {
+  const sortField = sortBy ?? ProductOrderField.Name;
+  const categories = categoryId ? [categoryId] : undefined;
   const result = await client
     .query<GetProductsQuery>(GetProductsDocument, {
-      sortField: sortBy,
+      sortField,
+      categories,
     } as GetProductsQueryVariables)
     .toPromise();
 

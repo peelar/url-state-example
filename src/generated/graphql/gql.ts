@@ -14,7 +14,7 @@ import { TypedDocumentNode as DocumentNode } from '@graphql-typed-document-node/
  */
 const documents = {
     "query GetCategories {\n  categories(first: 100) {\n    edges {\n      node {\n        id\n        name\n        slug\n      }\n    }\n  }\n}": types.GetCategoriesDocument,
-    "query GetProducts($sortField: ProductOrderField) {\n  products(\n    channel: \"default-channel\"\n    first: 10\n    sortBy: {field: $sortField, direction: ASC}\n  ) {\n    edges {\n      node {\n        id\n        name\n        slug\n      }\n    }\n  }\n}": types.GetProductsDocument,
+    "query GetProducts($sortField: ProductOrderField, $categories: [ID!]) {\n  products(\n    channel: \"default-channel\"\n    first: 10\n    sortBy: {field: $sortField, direction: ASC}\n    filter: {categories: $categories}\n  ) {\n    edges {\n      node {\n        id\n        name\n        slug\n      }\n    }\n  }\n}": types.GetProductsDocument,
 };
 
 /**
@@ -38,7 +38,7 @@ export function graphql(source: "query GetCategories {\n  categories(first: 100)
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
-export function graphql(source: "query GetProducts($sortField: ProductOrderField) {\n  products(\n    channel: \"default-channel\"\n    first: 10\n    sortBy: {field: $sortField, direction: ASC}\n  ) {\n    edges {\n      node {\n        id\n        name\n        slug\n      }\n    }\n  }\n}"): (typeof documents)["query GetProducts($sortField: ProductOrderField) {\n  products(\n    channel: \"default-channel\"\n    first: 10\n    sortBy: {field: $sortField, direction: ASC}\n  ) {\n    edges {\n      node {\n        id\n        name\n        slug\n      }\n    }\n  }\n}"];
+export function graphql(source: "query GetProducts($sortField: ProductOrderField, $categories: [ID!]) {\n  products(\n    channel: \"default-channel\"\n    first: 10\n    sortBy: {field: $sortField, direction: ASC}\n    filter: {categories: $categories}\n  ) {\n    edges {\n      node {\n        id\n        name\n        slug\n      }\n    }\n  }\n}"): (typeof documents)["query GetProducts($sortField: ProductOrderField, $categories: [ID!]) {\n  products(\n    channel: \"default-channel\"\n    first: 10\n    sortBy: {field: $sortField, direction: ASC}\n    filter: {categories: $categories}\n  ) {\n    edges {\n      node {\n        id\n        name\n        slug\n      }\n    }\n  }\n}"];
 
 export function graphql(source: string) {
   return (documents as any)[source] ?? {};

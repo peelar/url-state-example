@@ -1,4 +1,7 @@
 import { getSorters } from "@/actions";
+import { SortersLinks } from "./SortersLinks";
+
+export type Sorter = Awaited<ReturnType<typeof getSorters>>[number];
 
 export const Sorters = () => {
   const sorters = getSorters();
@@ -6,11 +9,7 @@ export const Sorters = () => {
   return (
     <section>
       <h2 className="text-xl">Sort by</h2>
-      <ul>
-        {sorters.map((sorter) => (
-          <li key={sorter.value}>{sorter.label}</li>
-        ))}
-      </ul>
+      <SortersLinks sorters={sorters} />
     </section>
   );
 };

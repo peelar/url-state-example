@@ -1,8 +1,9 @@
-query GetProducts($sortField: ProductOrderField) {
+query GetProducts($sortField: ProductOrderField, $categories: [ID!]) {
   products(
     channel: "default-channel"
     first: 10
     sortBy: { field: $sortField, direction: ASC }
+    filter: { categories: $categories }
   ) {
     edges {
       node {
