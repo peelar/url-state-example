@@ -27,5 +27,5 @@ h6 {
 }
 
 ul {
-  @apply list-disc mx-4 my-2;
+  @apply my-2;
 }

@@ -14,6 +14,20 @@ query GetProducts(
         id
         name
         slug
+        thumbnail(size: 256, format: WEBP) {
+          url
+          alt
+        }
+        pricing {
+          priceRange {
+            start {
+              gross {
+                amount
+                currency
+              }
+            }
+          }
+        }
       }
     }
   }

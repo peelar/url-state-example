@@ -1,7 +1,7 @@
 import { cacheExchange, createClient, fetchExchange } from "urql";
-import { env } from "../env";
+import { API_URL } from "./const";
 
-const url = env.SALEOR_API_URL;
+const url = API_URL;
 
 export const client = createClient({
   url,
