@@ -43,7 +43,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={clsx(inter.className, "bg-stone-50")}>
-        <div className="mx-auto container my-4 px-4">
+        <div className="mx-auto container my-8 px-4">
           <SearchLayout>{children}</SearchLayout>
         </div>
       </body>
